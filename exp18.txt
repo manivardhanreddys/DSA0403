@@ -1,0 +1,114 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import scipy.stats as stats
+
+# Create the dataset
+data = {
+    'age': [23, 23, 27, 27, 30, 41, 47, 49, 50,
+            52, 54, 54, 56, 57, 58, 58, 60, 61],
+
+    '%fat': [9.5, 26.5, 7.8, 17.8, 31.4, 25.9,
+             27.4, 27.2, 31.2, 34.6, 42.5, 28.8,
+             33.4, 30.2, 34.1, 32.9, 41.2, 35.7]
+}
+
+# Create DataFrame
+df = pd.DataFrame(data)
+
+print("AGE AND BODY FAT DATASET")
+print(df)
+
+# Calculate mean, median and standard deviation
+print("\nSTATISTICAL MEASURES")
+
+print("\nMean:")
+print(df.mean())
+
+print("\nMedian:")
+print(df.median())
+
+print("\nStandard Deviation:")
+print(df.std())
+
+# Draw Boxplots
+plt.figure(figsize=(8, 5))
+
+plt.boxplot([df['age'], df['%fat']],
+            labels=['Age', 'Body Fat'])
+
+plt.title("Boxplot of Age and Body Fat")
+plt.ylabel("Values")
+plt.show()
+
+# Draw Scatter Plot
+plt.figure(figsize=(8, 5))
+
+plt.scatter(df['age'], df['%fat'])
+
+plt.xlabel("Age")
+plt.ylabel("Body Fat (%)")
+plt.title("Scatter Plot of Age vs Body Fat")
+plt.grid()
+plt.show()
+
+# Draw Q-Q Plot for Age
+plt.figure(figsize=(6, 5))
+
+stats.probplot(df['age'], dist="norm", plot=plt)
+
+plt.title("Q-Q Plot of Age")
+plt.show()
+
+# Draw Q-Q Plot for Body Fat
+plt.figure(figsize=(6, 5))
+
+stats.probplot(df['%fat'], dist="norm", plot=plt)
+
+plt.title("Q-Q Plot of Body Fat")
+plt.show()
+
+output
+AGE AND BODY FAT DATASET
+    age  %fat
+0    23   9.5
+1    23  26.5
+2    27   7.8
+3    27  17.8
+4    30  31.4
+5    41  25.9
+6    47  27.4
+7    49  27.2
+8    50  31.2
+9    52  34.6
+10   54  42.5
+11   54  28.8
+12   56  33.4
+13   57  30.2
+14   58  34.1
+15   58  32.9
+16   60  41.2
+17   61  35.7
+
+STATISTICAL MEASURES
+
+Mean:
+age     45.944444
+%fat    28.783333
+dtype: float64
+
+Median:
+age     51.0
+%fat    30.7
+dtype: float64
+
+Standard Deviation:
+age     13.678976
+%fat     9.254395
+dtype: float64
+/tmp/ipykernel_3086/289988236.py:36: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+  plt.boxplot([df['age'], df['%fat']],
+
+
+
+
+
